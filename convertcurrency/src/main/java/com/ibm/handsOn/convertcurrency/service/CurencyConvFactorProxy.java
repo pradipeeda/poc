@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ibm.handsOn.convertcurrency.model.ConversionFactor;
 
-@FeignClient(name = "currencyfactor")
+@FeignClient(name = "currencyfactorms")
 public interface CurencyConvFactorProxy {
 	
-	@GetMapping("/getConversionFactor/{countrycode}")
+	@GetMapping("/currencyfactor/getConversionFactor/{countrycode}")
 	public ConversionFactor getConversionFactor(@PathVariable("countrycode") String inCountryCode);
 }

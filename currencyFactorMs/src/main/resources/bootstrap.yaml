@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: currencyfactorms
+  profiles:
+    active: dev
+
