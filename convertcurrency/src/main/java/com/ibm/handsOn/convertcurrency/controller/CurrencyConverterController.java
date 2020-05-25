@@ -20,15 +20,9 @@ public class CurrencyConverterController {
 			@PathVariable("amount") double amount)
 	{
 		
-		String amountInRupees = currencyConverterService.convertToRupee(countryCode,amount);
-		StringBuilder tmpReturn = new StringBuilder("Amount of ")
-				.append(amount)
-				.append(" in ")
-				.append(countryCode)
-				.append(" is equivalent to ")
-				.append( amountInRupees)
-				.append(" Rupees.");
-		return tmpReturn.toString();
+		String message = currencyConverterService.convertToRupee(countryCode,amount);
+		
+		return message;
 	}
 
 }

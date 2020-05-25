@@ -1,10 +1,16 @@
+#server:
+#  port: 8081
 server:
-  port: 8081
+  port: ${PORT:${SERVER_PORT:0}} 
+
 spring:  
   sleuth:
     trace-id128: true
     sampler:
       probability: 1.0
+  zipkin:
+    base-url: http://192.168.99.100:9411/
+
   h2:
     console:
       enabled: true
@@ -32,3 +38,6 @@ eureka:
     fetch-registry: true    prefer-same-zone-eureka: true
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+logging:
+  pattern:
+    level: "[%X{X-B3-TraceId} : %X{X-B3-SpanId}] %-5p [%t] %C{2} - %m%n"

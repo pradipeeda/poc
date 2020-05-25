@@ -35,7 +35,7 @@ public class ConversionFactorController {
 	@GetMapping("/getConversionFactor/{countrycode}")
 	public ConversionFactor getConversionFactor(@PathVariable("countrycode") String inCountrycode)
 	{
-		System.out.println("inCountrycode ::::" + inCountrycode);
+		System.out.println("inCountrycode:" + inCountrycode + " ,  tomcatid" +System.getProperty("catalina.base"));
 		return currencyFactorService.getConverSionFactor(inCountrycode);					
 	}
 	

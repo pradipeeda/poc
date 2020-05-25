@@ -23,7 +23,7 @@ public class CurrencyFactorService {
 			{
 				existingCurrencyConversion.setConversionFactor(inConversionFactor.getConversionFactor());
 				currencyConversionRepository.save(existingCurrencyConversion);
-				tmpReturn = "UPDATED";
+				tmpReturn = "ConversionFactor " +  inConversionFactor.getConversionFactor() + " was updated for country code:" + inConversionFactor.getCountryCode();
 			}
 			else
 			{
@@ -31,7 +31,7 @@ public class CurrencyFactorService {
 				newCurrencyConversion.setCountryCode(inConversionFactor.getCountryCode());
 				newCurrencyConversion.setConversionFactor(inConversionFactor.getConversionFactor());
 				currencyConversionRepository.save(newCurrencyConversion);
-				tmpReturn = "ADDED";
+				tmpReturn = "New Countrycode/conversionFactor added:" + inConversionFactor.getCountryCode() + "/" + inConversionFactor.getConversionFactor() ;
 			}
 		}
 		// TODO Auto-generated method stub
