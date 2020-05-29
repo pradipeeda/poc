@@ -1,0 +1,42 @@
+spring:
+  sleuth:
+    trace-id128: true
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://35.225.16.122:9411/
+  cloud:
+    gateway:
+      routes:
+      - id: currencyfactorms
+        uri: lb://currencyfactorms
+        predicates:
+        - Path=/currencyfactor/**
+        
+      - id: convertcurrencyms
+        uri: lb://currencyfactorms
+        predicates:
+        - Path=/currencyconverter/**
+        
+          
+          
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${random.int}
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+    preferIpAddress: true
+    metadata-map:
+      zone: A
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    prefer-same-zone-eureka: true
+    serviceUrl:
+      defaultZone: ${cloudapigateway.eureka.url:http://35.192.214.133:8761/eureka}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

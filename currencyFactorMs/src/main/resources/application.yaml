@@ -9,7 +9,7 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://192.168.99.100:9411/
+    base-url: http://192.168.99.101:9411/
 
   h2:
     console:
@@ -28,6 +28,12 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
         ddl-auto: create-drop
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
 eureka:
   instance:    instance-id: ${spring.application.name}:${random.int}
     lease-renewal-interval-in-seconds: 2
@@ -37,7 +43,8 @@ eureka:
     register-with-eureka: true
     fetch-registry: true    prefer-same-zone-eureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${currencyfactorms.eureka.url:http://192.168.99.101:8761/eureka}
+
 logging:
   pattern:
     level: "[%X{X-B3-TraceId} : %X{X-B3-SpanId}] %-5p [%t] %C{2} - %m%n"
