@@ -8,15 +8,15 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: currencyfactorms
-        uri: lb://currencyfactorms
+      - id: loginms
+        uri: lb://loginms
         predicates:
-        - Path=/currencyfactor/**
+        - Path=/login/**
         
-      - id: convertcurrencyms
-        uri: lb://currencyfactorms
+      - id: receiveorderms
+        uri: lb://receiveorderms
         predicates:
-        - Path=/currencyconverter/**
+        - Path=/receiveorder/**
                             
 eureka:
   instance:
